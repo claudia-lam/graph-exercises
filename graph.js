@@ -66,6 +66,7 @@ class Graph {
       for (const neighbor of current.adjacent) {
         if (!seen.has(neighbor)) {
           toVisitStack.push(neighbor);
+          seen.add(neighbor);
         }
       }
     }
