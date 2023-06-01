@@ -24,7 +24,6 @@ class Graph {
   addVertices(vertexArray) {
     // console.log("SPREAD", ...vertexArray)
     for (const node of vertexArray) {
-      console.log("NODE:",  node)
       this.nodes.add(node)
     }
 
@@ -47,10 +46,31 @@ class Graph {
    * - remove it from nodes property of graph
    * - update any adjacency lists using that vertex
    */
-  removeVertex(vertex) { }
+  removeVertex(vertex) {
+    for (const neighbor of vertex.adjacent) {
+      neighbor.adjacent.delete(vertex);
+    }
+    this.nodes.delete(vertex);
+   }
 
   /** traverse graph with DFS and returns array of Node values */
-  depthFirstSearch(start) { }
+  depthFirstSearch(start) {
+    const toVisitStack = [start];
+    const seen = new Set(toVisitStack);
+    const visited = [];
+
+    while (toVisitStack.length) {
+      const current = toVisitStack.pop();
+      visited.push(current);
+
+      for (const neighbor of current.adjacent) {
+        if (!seen.has(neighbor)) {
+          toVisitStack.push(neighbor);
+        }
+      }
+    }
+    return visited;
+   }
 
   /** traverse graph with BDS and returns array of Node values */
   breadthFirstSearch(start) { }
