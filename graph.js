@@ -54,22 +54,56 @@ class Graph {
    }
 
   /** traverse graph with DFS and returns array of Node values */
-  depthFirstSearch(start) {
-    const toVisitStack = [start];
-    const seen = new Set(toVisitStack);
-    const visited = [];
+  // depthFirstSearch(start) {
+  //   const toVisitStack = [start];
+  //   const seen = new Set(toVisitStack);
+  //   const visited = [];
 
-    while (toVisitStack.length) {
-      const current = toVisitStack.pop();
-      visited.push(current.value);
+  //   while (toVisitStack.length) {
+  //     const current = toVisitStack.pop();
+  //     visited.push(current.value);
 
-      for (const neighbor of current.adjacent) {
-        if (!seen.has(neighbor)) {
-          toVisitStack.push(neighbor);
-          seen.add(neighbor);
-        }
+  //     for (const neighbor of current.adjacent) {
+  //       if (!seen.has(neighbor)) {
+  //         toVisitStack.push(neighbor);
+  //         seen.add(neighbor);
+  //       }
+  //     }
+  //   }
+  //   return visited;
+  //  }
+
+  // seen = {A, B, C}
+  // start =
+  // visited = []
+
+
+  // Call stack:
+
+
+
+
+
+
+
+
+  // depthFirstSearch(C, seen = {A, B}) -- visited = [C]
+  // depthFirstSearch(B, seen = {A}) --- visted = [C, B]
+  // depthFirstSearch(A, seen) --- visited = [C, B, A]
+
+     /** traverse graph with DFS and returns array of Node values */
+  depthFirstSearch(start, seen = new Set()) {
+    let visited = [];
+    const current = start;
+
+    seen.add(current);
+
+    for (let neighbor of current.adjacent) {
+      if (!seen.has(neighbor)) {
+        visited = [...this.depthFirstSearch(neighbor, seen)];
       }
     }
+    visited.push(current.value);
     return visited;
    }
 
