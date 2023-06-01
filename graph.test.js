@@ -275,37 +275,37 @@ describe("DFS", function () {
 //   });
 // });
 
-// // describe("distanceOfShortestPath", function () {
-// //   it("should return distance of shortest path from start to end vertices", function () {
-// //     // build graph
-// //     //
-// //     //            R
-// //     //         /  |  \
-// //     //        I - T - H
-// //     //                |
-// //     //                M
-// //     //
+describe("distanceOfShortestPath", function () {
+  it("should return distance of shortest path from start to end vertices", function () {
+    // build graph
+    //
+    //            R
+    //         /  |  \
+    //        I - T - H
+    //                |
+    //                M
+    //
 
-// //     let graph = new Graph();
+    let graph = new Graph();
 
-// //     let r = new Node("R");
-// //     let i = new Node("I");
-// //     let t = new Node("T");
-// //     let h = new Node("H");
-// //     let m = new Node("M");
+    let r = new Node("R");
+    let i = new Node("I");
+    let t = new Node("T");
+    let h = new Node("H");
+    let m = new Node("M");
 
-// //     graph.addVertices([r, i, t, h, m]);
+    graph.addVertices([r, i, t, h, m]);
 
-// //     graph.addEdge(r, i);
-// //     graph.addEdge(r, t);
-// //     graph.addEdge(r, h);
-// //     graph.addEdge(i, t);
-// //     graph.addEdge(t, h);
-// //     graph.addEdge(h, m);
+    graph.addEdge(r, i);
+    graph.addEdge(r, t);
+    graph.addEdge(r, h);
+    graph.addEdge(i, t);
+    graph.addEdge(t, h);
+    graph.addEdge(h, m);
 
-// //     expect(graph.distanceOfShortestPath(r, m)).toBe(2);
-// //     expect(graph.distanceOfShortestPath(t, r)).toBe(1);
-// //     expect(graph.distanceOfShortestPath(t, m)).toBe(2);
-// //     expect(graph.distanceOfShortestPath(t, "rogue node")).toBe(undefined);
-// //   });
-// // });
+    expect(graph.distanceOfShortestPath(r, m)).toBe(2);
+    expect(graph.distanceOfShortestPath(t, r)).toBe(1);
+    expect(graph.distanceOfShortestPath(t, m)).toBe(2);
+    expect(graph.distanceOfShortestPath(t, "rogue node")).toBe(undefined);
+  });
+});
