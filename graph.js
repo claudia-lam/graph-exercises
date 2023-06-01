@@ -61,7 +61,7 @@ class Graph {
 
     while (toVisitStack.length) {
       const current = toVisitStack.pop();
-      visited.push(current);
+      visited.push(current.value);
 
       for (const neighbor of current.adjacent) {
         if (!seen.has(neighbor)) {
@@ -74,7 +74,25 @@ class Graph {
    }
 
   /** traverse graph with BDS and returns array of Node values */
-  breadthFirstSearch(start) { }
+  breadthFirstSearch(start) {
+    const toVisitQueue = [start];
+    const seen = new Set(toVisitQueue);
+    const visited = [];
+
+    while (toVisitQueue.length) {
+      const current = toVisitQueue.shift();
+      visited.push(current.value);
+
+      for (const neighbor of current.adjacent) {
+        if (!seen.has(neighbor)) {
+          toVisitQueue.push(neighbor);
+          seen.add(neighbor);
+        }
+
+      }
+    }
+    return visited;
+   }
 
   /** find the distance of the shortest path from the start vertex to the end vertex */
   distanceOfShortestPath(start, end) { }
